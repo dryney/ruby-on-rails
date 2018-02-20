@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 <h2>Your Cart</h2>
-  <ul>
+  <table>
   <% @cart.line_items.each do |item| %>
-  <li><%= item.quantity %> &times; <%= item.product.title %></li>
-  <% end %>
-</ul>
+  <tr>
+<td><%= item.quantity %>&times;</td>
+<td><%= item.product.title %></td>
+</tr>
+<% end %>
+<tr class="total_line">
+<td colspan="2">Total</td>
+</tr>
+</table>
+<%= button_to 'Empty cart', @cart, method: :delete,
+data: { confirm: 'Are you sure?' } %>
