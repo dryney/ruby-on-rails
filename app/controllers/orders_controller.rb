@@ -37,6 +37,8 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+
+        OrderMailer.received(@order).deliver_later
         format.html { redirect_to store_index_url, notice:
             'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
@@ -73,9 +75,13 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
+    private
+    def ensure_cart_isnt_empty
+      if @cart.line_items.empty?
+        redirect_to store_index_url, notice: 'Your cart is empty'
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
