@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Use jquery as the JavaScript library
+gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
