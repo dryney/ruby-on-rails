@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # . . .
-Products.create(title: 'Seven Mobile Apps in Seven Weeks',
+Product.create(title: 'Seven Mobile Apps in Seven Weeks',
 description:
 %{<p>
 <em>Native Apps, Multiple Platforms</em>
